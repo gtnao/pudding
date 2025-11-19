@@ -1,0 +1,148 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.game-container {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.game-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.game-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.controls-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Overlay styles */
+.game-over-overlay,
+.pause-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.game-over-message,
+.pause-message {
+  background-color: #1a1a1a;
+  border: 3px solid #555;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.game-over-message h2,
+.pause-message h2 {
+  color: #fff;
+  font-size: 36px;
+  margin: 0 0 20px 0;
+}
+
+.game-over-message p {
+  color: #aaa;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.restart-button,
+.resume-button {
+  background-color: #4a4a8a;
+  border: 2px solid #6a6aaa;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+.restart-button:hover,
+.resume-button:hover {
+  background-color: #6a6aaa;
+  transform: scale(1.05);
+}
+
+.restart-button:active,
+.resume-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 3px;
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+
+  .game-container {
+    gap: 8px;
+    margin-bottom: 3px;
+  }
+
+  .game-sidebar {
+    gap: 8px;
+  }
+
+  .controls-container {
+    margin-top: 3px;
+  }
+
+  .game-over-message h2,
+  .pause-message h2 {
+    font-size: 22px;
+  }
+
+  .game-over-message,
+  .pause-message {
+    padding: 25px;
+  }
+
+  .game-over-message p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .restart-button,
+  .resume-button {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+}

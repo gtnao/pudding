@@ -1,0 +1,85 @@
+.touch-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background-color: #1a1a1a;
+  border: 2px solid #333;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.control-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.control-button {
+  width: 70px;
+  height: 55px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #333;
+  border: 2px solid #555;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-button:active {
+  background-color: #555;
+  transform: scale(0.95);
+}
+
+.control-button:hover {
+  background-color: #444;
+}
+
+.rotate-btn {
+  background-color: #4a4a8a;
+  border-color: #6a6aaa;
+}
+
+.rotate-btn:active {
+  background-color: #6a6aaa;
+}
+
+.hard-drop-btn {
+  background-color: #8a4a4a;
+  border-color: #aa6a6a;
+}
+
+.hard-drop-btn:active {
+  background-color: #aa6a6a;
+}
+
+@media (max-width: 768px) {
+  .touch-controls {
+    max-width: 100%;
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .control-row {
+    gap: 6px;
+  }
+
+  .control-button {
+    width: 60px;
+    height: 50px;
+    font-size: 20px;
+  }
+}

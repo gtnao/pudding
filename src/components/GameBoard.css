@@ -1,0 +1,50 @@
+.game-board-container {
+  position: relative;
+  display: inline-block;
+  --block-size: 30px;
+  --border-width: 3px;
+  --padding-width: 2px;
+  --offset: calc(var(--border-width) + var(--padding-width));
+}
+
+.game-board {
+  display: inline-block;
+  border: 3px solid #333;
+  background-color: #1a1a1a;
+  padding: 2px;
+  contain: layout style;
+}
+
+.board-row {
+  display: flex;
+  line-height: 0;
+  contain: layout style;
+}
+
+.board-cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #333;
+  background-color: #0a0a0a;
+  box-sizing: border-box;
+}
+
+.piece-overlay {
+  position: absolute;
+  pointer-events: none;
+  line-height: 0;
+}
+
+@media (max-width: 768px) {
+  .game-board-container {
+    --block-size: 20px;
+    --border-width: 2px;
+    --padding-width: 1px;
+    --offset: calc(var(--border-width) + var(--padding-width));
+  }
+
+  .game-board {
+    border: 2px solid #333;
+    padding: 1px;
+  }
+}
