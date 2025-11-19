@@ -203,7 +203,7 @@ export const useGame = () => {
       return
     }
 
-    const dropSpeed = Math.max(100, 500 - (gameState.level - 1) * 50)
+    const dropSpeed = Math.max(50, 300 - (gameState.level - 1) * 80)
 
     dropIntervalRef.current = window.setInterval(() => {
       movePiece(0, 1)

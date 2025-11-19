@@ -1,10 +1,15 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import './App.css'
 import GameBoard from './components/GameBoard'
 import NextBlock from './components/NextBlock'
 import ScoreDisplay from './components/ScoreDisplay'
 import TouchControls from './components/TouchControls'
 import { useGame } from './hooks/useGame'
+
+interface LineClearEffect {
+  id: number
+  puddingType: number
+}
 
 function App() {
   const {
@@ -25,10 +30,31 @@ function App() {
     initGame
   } = useGame()
 
+  const [lineClearEffects, setLineClearEffects] = useState<LineClearEffect[]>([])
+  const previousLines = useRef(0)
+
   // Initialize game on mount
   useEffect(() => {
     initGame()
   }, [initGame])
+
+  // Detect line clear and trigger effect
+  useEffect(() => {
+    if (lines > previousLines.current && lines > 0) {
+      const randomPudding = Math.floor(Math.random() * 7) + 1
+      const newEffect: LineClearEffect = {
+        id: Date.now(),
+        puddingType: randomPudding
+      }
+      setLineClearEffects(prev => [...prev, newEffect])
+
+      // Remove effect after animation completes
+      setTimeout(() => {
+        setLineClearEffects(prev => prev.filter(e => e.id !== newEffect.id))
+      }, 1000)
+    }
+    previousLines.current = lines
+  }, [lines])
 
   // Keyboard controls
   useEffect(() => {
@@ -74,6 +100,17 @@ function App() {
 
   return (
     <div className="app">
+      {/* Line clear effect */}
+      {lineClearEffects.map(effect => (
+        <div key={effect.id} className="line-clear-effect">
+          <img
+            src={`/pudding/pudding0${effect.puddingType}.png`}
+            alt="pudding"
+            className="attacking-pudding"
+          />
+        </div>
+      ))}
+
       {gameOver && (
         <div className="game-over-overlay">
           <div className="game-over-message">
@@ -82,6 +119,17 @@ function App() {
             <button className="restart-button" onClick={initGame}>
               Restart
             </button>
+          </div>
+          {/* Mocking puddings */}
+          <div className="mocking-puddings">
+            {[1, 2, 3, 4, 5, 6, 7].map(type => (
+              <img
+                key={type}
+                src={`/pudding/pudding0${type}.png`}
+                alt="pudding"
+                className={`mocking-pudding mocking-pudding-${type}`}
+              />
+            ))}
           </div>
         </div>
       )}

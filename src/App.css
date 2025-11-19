@@ -7,6 +7,12 @@
   padding: 10px;
   position: relative;
   box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 .game-container {
@@ -105,6 +111,156 @@
   transform: scale(0.98);
 }
 
+/* Line clear effect */
+.line-clear-effect {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 999;
+}
+
+.attacking-pudding {
+  width: 100px;
+  height: 100px;
+  animation: attack-zoom 1s ease-out forwards;
+  image-rendering: pixelated;
+}
+
+@keyframes attack-zoom {
+  0% {
+    transform: scale(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    transform: scale(0.5) translateX(-20px);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(1) translateX(20px);
+  }
+  30% {
+    transform: scale(1.5) translateX(-15px);
+  }
+  40% {
+    transform: scale(2) translateX(15px);
+  }
+  50% {
+    transform: scale(2.5) translateX(-10px);
+  }
+  60% {
+    transform: scale(3) translateX(10px);
+  }
+  70% {
+    transform: scale(3.5) translateX(-10px);
+  }
+  80% {
+    transform: scale(4) translateX(10px);
+  }
+  90% {
+    transform: scale(4.5) translateX(-5px);
+  }
+  100% {
+    transform: scale(5) translateX(0);
+    opacity: 0;
+  }
+}
+
+/* Mocking puddings */
+.mocking-puddings {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.mocking-pudding {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  image-rendering: pixelated;
+}
+
+.mocking-pudding-1 {
+  top: 10%;
+  left: 10%;
+  animation: mock-bounce-1 0.6s ease-in-out infinite;
+}
+
+.mocking-pudding-2 {
+  top: 15%;
+  right: 15%;
+  animation: mock-shake-2 0.5s ease-in-out infinite;
+}
+
+.mocking-pudding-3 {
+  top: 50%;
+  left: 5%;
+  animation: mock-spin-3 0.8s linear infinite;
+}
+
+.mocking-pudding-4 {
+  top: 50%;
+  right: 5%;
+  animation: mock-bounce-2 0.7s ease-in-out infinite;
+}
+
+.mocking-pudding-5 {
+  bottom: 15%;
+  left: 20%;
+  animation: mock-wiggle-5 0.4s ease-in-out infinite;
+}
+
+.mocking-pudding-6 {
+  bottom: 15%;
+  right: 20%;
+  animation: mock-shake-2 0.6s ease-in-out infinite reverse;
+}
+
+.mocking-pudding-7 {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: mock-float-7 1s ease-in-out infinite;
+}
+
+@keyframes mock-bounce-1 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.1); }
+}
+
+@keyframes mock-bounce-2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(15deg); }
+}
+
+@keyframes mock-shake-2 {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-10px) rotate(-10deg); }
+  75% { transform: translateX(10px) rotate(10deg); }
+}
+
+@keyframes mock-spin-3 {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes mock-wiggle-5 {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-20deg) scale(1.1); }
+  75% { transform: rotate(20deg) scale(1.1); }
+}
+
+@keyframes mock-float-7 {
+  0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
+  50% { transform: translateX(-50%) translateY(-30px) scale(1.2); }
+}
+
 @media (max-width: 768px) {
   .app {
     padding: 3px;
@@ -144,5 +300,15 @@
   .resume-button {
     font-size: 14px;
     padding: 8px 20px;
+  }
+
+  .attacking-pudding {
+    width: 60px;
+    height: 60px;
+  }
+
+  .mocking-pudding {
+    width: 50px;
+    height: 50px;
   }
 }
