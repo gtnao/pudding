@@ -5,7 +5,6 @@ import {
   mergePieceToBoard,
   clearLines,
   calculateScore,
-  getBoardWithPiece,
   getGhostPosition,
   BOARD_WIDTH,
   type Board,
